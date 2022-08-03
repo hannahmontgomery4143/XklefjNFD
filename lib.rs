@@ -10,8 +10,6 @@ mod add_functions;
 mod basic;
 mod dict_management;
 mod dict_training;
-mod transparent;
-mod util;
 
 pub use log::LevelFilter as LogLevel;
 
@@ -23,7 +21,6 @@ pub fn load(connection: &Connection) -> anyhow::Result<()> {
 /// Loads the sqlite extension with the given log level
 pub fn load_with_loglevel(
     connection: &Connection,
-    default_log_level: LogLevel,
 ) -> anyhow::Result<()> {
     init_logging(default_log_level);
     crate::add_functions::add_functions(connection)
